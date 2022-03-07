@@ -25,3 +25,27 @@ class Unit {
         game.units[z] = unit
     }
 }
+
+Unit.prototype.move = function(z) {
+
+    const unit = this
+    console.log(z)
+    game.units[z].delete()
+
+    unit.z = z
+    unit.x = Math.floor(z / mapDimensions)
+    unit.y = Math.floor(z % mapDimensions)
+
+    unit.el.style.left = unit.x * (gameWidth / mapDimensions) + 'px'
+    unit.el.style.top = unit.y * (gameHeight / mapDimensions) + 'px'
+
+    game.units[z] = unit
+}
+
+Unit.prototype.delete = function() {
+
+    const unit = this
+
+    unit.el.remove()
+    delete game.units[unit.z]
+}

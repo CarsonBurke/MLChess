@@ -8,15 +8,3 @@ class Pawn extends Unit {
 
     }
 }
-
-Pawn.prototype.move = function(x, y) {
-
-    const pawn = this,
-
-        z = x * 50 + y
-
-    game.units[pawn.z] = undefined
-    game.units[z] = pawn
-
-    pawn.owner.move = false
-}
