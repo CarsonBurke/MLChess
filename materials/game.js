@@ -24,6 +24,8 @@ Game.prototype.init = function() {
     game.initPlayers()
     game.initTerrain()
     game.initUnits()
+
+    game.units['62'].getOptions()
 }
 
 Game.prototype.initPlayers = function() {
