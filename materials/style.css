@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: var(--foreground1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    --lightPurple: rgb(174, 0, 255);
+    --purple: rgb(123, 0, 224);
+    --darkPurple: rgb(83, 0, 151);
+    --lightRed: rgb(255, 0, 0);
+    --red: rgb(214, 0, 0);
+    --darkRed: rgb(151, 0, 0);
+    --lightBlue: rgb(0, 151, 238);
+    --blue: rgb(5, 80, 219);
+    --darkBlue: rgb(0, 64, 241);
+    --lightGreen: rgb(0, 255, 0);
+    --green: rgb(0, 212, 0);
+    --darkGreen: rgb(0, 184, 0);
+}
+
+
+/*  */
+
+.hidden {
+    display: none;
+}
+
+
+/*  */
+
+.mapParent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(48, 46, 42);
+}
+
+.map {
+    background: rgb(238, 239, 211);
+    box-shadow: rgba(0, 0, 0, 0.35) 0 20px 200px 0, rgba(0, 0, 0, 0.25) 0 4px 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.terrain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.units {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.terrainAlt {
+    background: rgb(118, 150, 86);
+}
