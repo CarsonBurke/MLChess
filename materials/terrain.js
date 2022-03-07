@@ -4,8 +4,8 @@ class Terrain {
         const terrain = this
 
         terrain.z = z
-        terrain.x = z / 50
-        terrain.y = Math.floor(z % 50)
+        terrain.x = Math.floor(z / mapDimensions)
+        terrain.y = Math.floor(z % mapDimensions)
 
         terrain.el = document.createElement('div')
         terrain.el.classList.add('terrain', z)
@@ -31,6 +31,9 @@ class Terrain {
             terrain.alt = true
             terrain.el.classList.add('terrainAlt')
         }
+
+        terrain.el.style.left = terrain.x * (gameWidth / mapDimensions) + 'px'
+        terrain.el.style.top = terrain.y * (gameHeight / mapDimensions) + 'px'
 
         terrain.el.style.width = gameWidth / mapDimensions + 'px'
         terrain.el.style.height = gameHeight / mapDimensions + 'px'

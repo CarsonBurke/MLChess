@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="materials/style.css">
 
     <link rel="icon" href="materials/images/gameIcon.png" type="image/png">
-    <title>Augmentum</title>
+    <title>Machine Learning Chess</title>
 </head>
 
 <body>
@@ -18,30 +18,38 @@
 
         <div class="map">
 
-            <div class="terrain"></div>
+            <div class="unitsParent"></div>
 
-            <div class="units"></div>
+            <div class="terrainParent"></div>
 
         </div>
     </div>
 
-    <!-- Sprites -->
-
-    <!-- <img src="materials/images/environmentalist.png" class="hidden" id="environmentalist"> -->
-
     <!-- JS imports -->
+
+    <!-- Nueral Net -->
+
+    <script src="materials/neuralNetwork/networkManager.js"></script>
+    <script src="materials/neuralNetwork/networkComponents.js"></script>
+    <script src="materials/neuralNetwork/networkFunctions.js"></script>
+    <script src="materials/neuralNetwork/layerFunctions.js"></script>
+    <script src="materials/neuralNetwork/perceptronFunctions.js"></script>
+    <script src="materials/neuralNetwork/lineFunctions.js"></script>
 
     <!-- Game -->
 
     <script src="materials/game.js"></script>
     <script src="materials/globalVars.js"></script>
 
+    <script src="materials/player.js"></script>
+
     <script src="materials/terrain.js"></script>
+
+    <script src="materials/units/unit.js"></script>
+    <script src="materials/units/pawn.js"></script>
 
     <script src="materials/script.js"></script>
     <script src="materials/scroller.js"></script>
-
-    <!-- Nueral Net -->
 
 </body>
 
