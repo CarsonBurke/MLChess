@@ -51,3 +51,31 @@ Unit.prototype.delete = function() {
     unit.el.remove()
     game.units[unit.z] = undefined
 }
+
+Unit.prototype.searchByOffsets = function(offsetX, offsetY) {
+
+    const unit = this
+
+    const positions = []
+
+    let x = 0,
+        y = 0
+
+    while (x < 0 || x >= mapDimensions || y < 0 || y >= mapDimensions) {
+
+        x += offsetX
+        y += offsetY
+
+        const unitAtPos = game.units[z]
+
+        if (unitAtPos) {
+
+            if (unitAtPos.owner == knight.owner) break
+
+            positions.push(x * mapDimensions + y)
+            break
+        }
+
+        positions.push(x * mapDimensions + y)
+    }
+}
