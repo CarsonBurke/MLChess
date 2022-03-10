@@ -58,24 +58,30 @@ Unit.prototype.searchByOffsets = function(offsetX, offsetY) {
 
     const positions = []
 
-    let x = 0,
-        y = 0
+    let x = unit.x,
+        y = unit.y
 
-    while (x < 0 || x >= mapDimensions || y < 0 || y >= mapDimensions) {
+    while (1 == 1) {
 
         x += offsetX
         y += offsetY
+
+        if (x < 0 || x >= mapDimensions || y < 0 || y >= mapDimensions) break
+
+        const z = x * mapDimensions + y
 
         const unitAtPos = game.units[z]
 
         if (unitAtPos) {
 
-            if (unitAtPos.owner == knight.owner) break
+            if (unitAtPos.owner == unit.owner) break
 
-            positions.push(x * mapDimensions + y)
+            positions.push(z)
             break
         }
 
-        positions.push(x * mapDimensions + y)
+        positions.push(z)
     }
+
+    return positions
 }

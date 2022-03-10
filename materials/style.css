@@ -62,7 +62,7 @@ body {
 
 .unit {
     position: absolute;
-    transition: all 0s;
+    transition: all 0.3s;
 }
 
 .terrainParent {
