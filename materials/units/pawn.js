@@ -5,6 +5,7 @@ class Pawn extends Unit {
 
         const pawn = this
 
+        pawn.firstMove = true
         pawn.direction = owner == 'white' ? -1 : 1
     }
 }
@@ -15,17 +16,37 @@ Pawn.prototype.getOptions = function() {
 
     pawn.options = []
 
-    pawn.options.push(pawn.x * mapDimensions + pawn.y + pawn.direction)
+    pawn.movePositions = new Map([
+        [pawn.x, pawn.y + pawn.direction], pawn.firstMove ? [pawn.x, (pawn.y + pawn.direction * 2)] : [Infinity, Infinity],
+    ])
 
-    if (!pawn.hasMoved) pawn.options.push(pawn.x * mapDimensions + (pawn.y + pawn.direction * 2))
+    for (const [x, y] of pawn.movePositions) {
 
-    const attackPositions = [
-        (pawn.x - 1) * mapDimensions + (pawn.y + pawn.direction),
-        (pawn.x + 1) * mapDimensions + (pawn.y + pawn.direction)
-    ]
+        const z = x * mapDimensions + y
 
-    for (const z of attackPositions) {
+        if (game.units[z]) continue
 
-        if (game.units[z]) pawn.options.push(z)
+        if (x < 0 || x >= mapDimensions || y < 0 || y >= mapDimensions) continue
+
+        pawn.options.push(z)
+    }
+
+    pawn.attackPositions = new Map([
+        [pawn.x - 1, (pawn.y + pawn.direction)],
+        [pawn.x + 1, (pawn.y + pawn.direction)]
+    ])
+
+    for (const [x, y] of pawn.attackPositions) {
+
+        const z = x * mapDimensions + y
+
+        const unitAtPos = game.units[z]
+        if (!unitAtPos) continue
+
+        if (unitAtPos.owner == pawn.owner) continue
+
+        if (x < 0 || x >= mapDimensions || y < 0 || y >= mapDimensions) continue
+
+        pawn.options.push(z)
     }
 }

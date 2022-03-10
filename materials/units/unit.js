@@ -29,8 +29,10 @@ class Unit {
 Unit.prototype.move = function(z) {
 
     const unit = this
-    console.log(z)
-    game.units[z].delete()
+
+    if (game.units[z]) game.units[z].delete()
+
+    game.units[unit.z] = undefined
 
     unit.z = z
     unit.x = Math.floor(z / mapDimensions)
@@ -47,5 +49,5 @@ Unit.prototype.delete = function() {
     const unit = this
 
     unit.el.remove()
-    delete game.units[unit.z]
+    game.units[unit.z] = undefined
 }

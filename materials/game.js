@@ -24,14 +24,11 @@ Game.prototype.init = function() {
     game.initPlayers()
     game.initTerrain()
     game.initUnits()
-
-    game.units['62'].getOptions()
 }
 
 Game.prototype.initPlayers = function() {
 
     game.players.white = new Player('white')
-    game.players.white.move = true
 
     game.players.black = new Player('black')
 }
