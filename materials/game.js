@@ -21,9 +21,9 @@ Game.prototype.init = function() {
     game.map.style.width = gameWidth + 'px'
     game.map.style.height = gameHeight + 'px'
 
-    game.initPlayers()
     game.initTerrain()
     game.initUnits()
+    game.initPlayers()
 }
 
 Game.prototype.initPlayers = function() {
@@ -108,12 +108,14 @@ Game.prototype.initUnits = function() {
     }
 }
 
-Game.prototype.newMatch = function(winner, looser) {
+Game.prototype.newMatch = function(winner) {
+
+    const looser = game.players[winner == 'white' ? 'black' : 'white']
 
     delete looser.network
 
     looser.network = winner.network.clone()
 
     game.units = []
-    Game.prototype.initUnits()
+    game.prototype.initUnits()
 }
