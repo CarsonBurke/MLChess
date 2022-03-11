@@ -7,6 +7,7 @@ class Pawn extends Unit {
 
         pawn.firstMove = true
         pawn.direction = owner == 'white' ? -1 : 1
+        pawn.score = 1
     }
 }
 

@@ -5,6 +5,7 @@ class Knight extends Unit {
 
         const knight = this
 
+        knight.score = 3
     }
 }
 

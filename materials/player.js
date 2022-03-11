@@ -4,7 +4,7 @@ class Player {
         const player = this
 
         player.type = type
-            // player.newNetwork()
+        player.score = 0
     }
 }
 
@@ -63,13 +63,20 @@ Player.prototype.getOptions = function() {
 
     const player = this
 
-    const options = []
+    const inputs = [],
+        outputs = []
 
-    for (const unit of game.units) {
+    for (let i = 0; i < game.units.length; i++) {
 
-        if (!unit) continue
+        const unit = game.units[i]
 
-        if (unit.moved) continue
+        if (!unit) {
+
+            inputs.push({ name: i, value: i })
+            continue
+        }
+
+        inputs.push({ name: unit.type + i, value: i })
 
         if (unit.owner != player.type) continue
 
@@ -77,23 +84,11 @@ Player.prototype.getOptions = function() {
 
         unit.getOptions()
 
-        unit.moved = true
-
-        const randomOption = unit.options[Math.round(Math.random() * unit.options.length)]
-
-        if (randomOption) {
-
-            unit.firstMove = false
-
-            unit.move(randomOption)
-            break
-        }
-
         for (const z of unit.options) {
 
-            options.push(z)
+            outputs.push({ name: z, unit: unit })
         }
     }
 
-    return options
+    return { inputs, outputs }
 }

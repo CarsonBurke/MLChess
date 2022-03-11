@@ -5,7 +5,7 @@ class Queen extends Unit {
 
         const queen = this
 
-
+        queen.score = 10
     }
 }
 

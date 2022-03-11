@@ -5,7 +5,7 @@ class Bishop extends Unit {
 
         const bishop = this
 
-
+        bishop.score = 3
     }
 }
 

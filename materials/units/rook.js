@@ -5,7 +5,7 @@ class Rook extends Unit {
 
         const rook = this
 
-
+        rook.score = 5
     }
 }
 

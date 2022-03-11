@@ -14,6 +14,8 @@ class Game {
 
 Game.prototype.init = function() {
 
+    game.tick = 0
+
     game.map = document.getElementsByClassName('map')[0]
 
     // Style canvas
@@ -108,14 +110,28 @@ Game.prototype.initUnits = function() {
     }
 }
 
-Game.prototype.newMatch = function(winner) {
+Game.prototype.newMatch = function(looser, inputs, outputs) {
 
-    const looser = game.players[winner == 'white' ? 'black' : 'white']
+    game.tick = 0
 
+    const winner = game.players[looser.type == 'white' ? 'black' : 'white']
+
+    winner.network.learn()
+    winner.score = 0
+    console.log('WIN: ' + winner.type)
+
+    looser.network.visualsParent.remove()
     delete looser.network
 
-    looser.network = winner.network.clone()
+    looser.network = winner.network.clone(inputs, outputs)
+    looser.score = 0
 
-    game.units = []
-    game.prototype.initUnits()
+    for (const unit of game.units) {
+
+        if (!unit) continue
+
+        unit.delete()
+    }
+
+    game.initUnits()
 }

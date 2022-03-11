@@ -10,6 +10,8 @@ class Unit {
         unit.type = type
         unit.owner = owner
 
+        unit.lastMoves = []
+
         unit.el = document.createElement('img')
         unit.el.classList.add('unit', z)
         unitsEl.appendChild(unit.el)
@@ -38,10 +40,20 @@ Unit.prototype.move = function(z) {
     unit.x = Math.floor(z / mapDimensions)
     unit.y = Math.floor(z % mapDimensions)
 
+    unit.lastMoves.push(z)
+
     unit.el.style.left = unit.x * (gameWidth / mapDimensions) + 'px'
     unit.el.style.top = unit.y * (gameHeight / mapDimensions) + 'px'
 
     game.units[z] = unit
+}
+
+Unit.prototype.kill = function() {
+
+    const unit = this
+
+    unit.el.remove()
+    unit.dead = true
 }
 
 Unit.prototype.delete = function() {
