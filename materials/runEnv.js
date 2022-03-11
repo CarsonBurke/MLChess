@@ -1,4 +1,5 @@
 let tick = 0
+let playersTurn = 'black'
 
 function runEnv() {
 
@@ -15,8 +16,12 @@ function runEnv() {
 
     for (const playerType in game.players) {
 
+        if (playersTurn == playerType) continue
+
         const player = game.players[playerType]
 
         player.getOptions()
+        playersTurn = player.type
+        break
     }
 }

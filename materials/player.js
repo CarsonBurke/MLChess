@@ -42,6 +42,7 @@ Player.prototype.getOptions = function() {
             unit.firstMove = false
 
             unit.move(randomOption)
+            break
         }
 
         for (const z of unit.options) {
